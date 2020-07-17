@@ -1,10 +1,10 @@
-#N canvas 321 23 1440 979 12;
+#N canvas -43 23 1440 979 12;
 #X obj 995 828 tabplay~;
 #X obj 65 910 dac~ 1 2;
 #X obj 66 880 *~;
 #X obj 117 877 *~;
-#X obj 168 746 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
--1 -1 0 1;
+#X obj 168 751 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 300 1;
 #N canvas 0 22 450 278 (subpatch) 0;
 #X array channelL 688391 float 2;
 #X coords 0 1 688391 -1 200 140 1;
@@ -26,7 +26,7 @@
 #X obj 74 609 *~;
 #X obj 121 577 r sampleSize;
 #X obj 56 654 tabread4~ channelL;
-#X obj 33 122 \; pd dsp \$1;
+#X obj 35 22 \; pd dsp \$1;
 #X obj 108 722 tabread4~ channelR;
 #X obj 490 293 metro 50;
 #X obj 489 340 snapshot~;
@@ -38,8 +38,8 @@
 1;
 #X obj 489 620 hsl 195 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 18135 1;
-#X obj 34 244 hsl 195 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 10437 1;
+#X obj 33 279 hsl 195 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 9700 1;
 #X floatatom 75 482 5 0 0 0 - - -;
 #X msg 31 187 0.076;
 #X msg 121 388 0;
@@ -63,9 +63,9 @@
 #X obj 618 383 hsl 195 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 19300 1;
 #X floatatom 620 432 5 0 0 0 - - -;
-#X text 42 267 Speed;
+#X text 173 301 Speed;
 #X obj 4 9;
-#N canvas 320 64 1375 548 analyzer 1;
+#N canvas 927 64 747 678 analyzer 1;
 #X obj 453 278 spigot;
 #X obj 416 219 bonk~;
 #X obj 371 278 spigot;
@@ -77,19 +77,35 @@
 #X obj 371 308 print raw;
 #X obj 556 267 s bonk-cooked;
 #X msg 268 126 thresh 2.5 50;
-#X msg 506 354;
-#X obj 484 366 unpack f f f;
+#X obj 381 367 unpack f f f;
 #X obj 419 88 inlet~;
-#X floatatom 516 479 5 0 0 0 - - -;
+#X floatatom 422 409 5 0 0 0 - - -;
 #X floatatom 637 437 5 0 0 0 - - -;
 #X obj 549 89 inlet;
 #X floatatom 583 164 5 0 0 0 - - -;
 #X obj 775 59 table onsets;
 #X obj 757 254 tabwrite onsets;
 #X floatatom 854 133 5 0 0 0 - - -;
+#X obj 406 509 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 825 358 counter;
+#X obj 403 559 float;
+#X obj 474 564 +;
+#X msg 551 515;
+#X floatatom 501 526 5 0 0 0 - - -;
+#X floatatom 410 615 5 0 0 0 - - -;
+#X floatatom 445 527 5 0 0 0 - - -;
+#X obj 680 364 f;
+#X obj 745 359 + 1;
+#X floatatom 679 405 5 0 0 0 - - -;
+#X obj 665 84 inlet;
+#X floatatom 672 185 5 0 0 0 - - -;
+#X obj 407 466 > 80;
+#X obj 670 143 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 460 442 5 0 0 0 - - -;
 #X connect 0 0 5 0;
 #X connect 0 0 9 0;
-#X connect 0 0 10 0;
 #X connect 1 0 2 0;
 #X connect 1 1 0 0;
 #X connect 1 1 7 0;
@@ -97,12 +113,29 @@
 #X connect 3 0 2 1;
 #X connect 4 0 0 1;
 #X connect 8 0 1 0;
-#X connect 10 1 12 0;
-#X connect 10 2 13 0;
-#X connect 11 0 1 0;
-#X connect 14 0 15 0;
-#X connect 15 0 17 0;
-#X connect 18 0 17 1;
+#X connect 9 1 11 0;
+#X connect 9 2 12 0;
+#X connect 10 0 1 0;
+#X connect 11 0 31 0;
+#X connect 13 0 14 0;
+#X connect 14 0 16 0;
+#X connect 17 0 16 1;
+#X connect 18 0 20 0;
+#X connect 18 0 26 0;
+#X connect 20 0 21 0;
+#X connect 20 0 24 0;
+#X connect 21 0 20 1;
+#X connect 22 0 23 0;
+#X connect 23 0 21 1;
+#X connect 25 0 20 1;
+#X connect 26 0 27 0;
+#X connect 26 0 28 0;
+#X connect 27 0 26 1;
+#X connect 29 0 32 0;
+#X connect 30 0 26 0;
+#X connect 31 0 18 0;
+#X connect 32 0 30 0;
+#X connect 33 0 31 1;
 #X restore 161 904 pd analyzer;
 #N canvas 0 23 674 575 serialcom 0;
 #X msg 218 99 devicename /dev/cu.usbmodem1413401;
@@ -229,18 +262,23 @@
 #X obj 656 682 t b f;
 #X floatatom 700 648 5 0 0 0 - - -;
 #X msg 784 679 0.999;
-#X floatatom 743 773 5 0 0 0 - - -;
 #X obj 598 868 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
 1;
 #X obj 638 817 spigot;
 #X obj 587 724 > 0.933;
-#X obj 758 747;
-#X obj 758 770;
-#X obj 815 778 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
-1;
 #X floatatom 661 757 5 0 0 0 - - -;
 #X obj 664 870 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
+#X obj 540 181 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 568 181 Start Analysis;
+#X msg 580 226 0;
+#X obj 698 905 s stopPlayback;
+#X obj 111 208 r stopPlayback;
+#X msg 85 231 0;
+#X obj 686 227 s startPlayback;
+#X obj 29 128 r startPlayback;
+#X msg 712 856 0;
 #X connect 2 0 1 0;
 #X connect 3 0 1 1;
 #X connect 3 0 51 0;
@@ -270,7 +308,7 @@
 #X connect 26 0 28 0;
 #X connect 26 0 36 0;
 #X connect 26 0 51 1;
-#X connect 26 0 61 0;
+#X connect 26 0 60 0;
 #X connect 27 0 21 0;
 #X connect 29 0 30 0;
 #X connect 30 0 15 0;
@@ -291,16 +329,25 @@
 #X connect 46 0 45 0;
 #X connect 47 0 48 0;
 #X connect 48 0 36 1;
-#X connect 55 1 61 1;
+#X connect 55 1 60 1;
 #X connect 56 0 55 0;
-#X connect 56 0 61 1;
+#X connect 56 0 60 1;
 #X connect 57 0 55 0;
-#X connect 57 0 61 1;
-#X connect 60 0 66 0;
-#X connect 61 0 65 0;
-#X connect 61 0 59 0;
-#X connect 61 0 60 0;
-#X connect 62 0 63 0;
-#X connect 64 0 60 1;
-#X connect 65 0 60 1;
-#X connect 66 0 27 0;
+#X connect 57 0 60 1;
+#X connect 59 0 62 0;
+#X connect 60 0 61 0;
+#X connect 60 0 58 0;
+#X connect 60 0 59 0;
+#X connect 61 0 59 1;
+#X connect 62 0 27 0;
+#X connect 62 0 66 0;
+#X connect 62 0 71 0;
+#X connect 62 0 51 2;
+#X connect 63 0 65 0;
+#X connect 63 0 27 0;
+#X connect 63 0 69 0;
+#X connect 65 0 43 0;
+#X connect 67 0 68 0;
+#X connect 68 0 29 0;
+#X connect 70 0 31 0;
+#X connect 71 0 61 0;
