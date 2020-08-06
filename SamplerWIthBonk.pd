@@ -45,17 +45,17 @@
 #X floatatom 616 560 5 0 0 0 - - -;
 #X obj 616 600 s retrig;
 #X obj 292 239 r retrig;
-#X obj 1024 728 hsl 195 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 1184 767 hsl 195 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X floatatom 1021 771 5 0 0 0 - - -;
+#X floatatom 1181 810 5 0 0 0 - - -;
 #X obj 650 335 s startBufferValue;
 #X obj 322 283 r startBufferValue;
 #X floatatom 290 318 5 0 0 0 - - -;
 #X obj 292 274 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 1273 726 hsl 195 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 1433 765 hsl 195 15 -1 1 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X floatatom 1270 771 5 0 0 0 - - -;
+#X floatatom 1430 810 5 0 0 0 - - -;
 #X text 92 366 Speed;
 #X obj 4 9;
 #N canvas 0 23 1886 980 analyzer 0;
@@ -408,7 +408,7 @@
 #X floatatom 86 910 5 0 0 0 - - -;
 #X floatatom 199 823 5 0 0 0 - - -;
 #X obj 85 937 s sliceStart;
-#X obj 1091 751 r sliceStart;
+#X obj 1251 790 r sliceStart;
 #X floatatom 193 907 5 0 0 0 - - -;
 #X obj 195 935 s sliceEnd;
 #X obj 643 527 r sliceEnd;
@@ -467,11 +467,11 @@
 #X floatatom 366 771 5 0 0 0 - - -;
 #X floatatom 328 825 5 0 0 0 - - -;
 #X obj 328 747 metro 500;
-#X obj 1036 531 adc~;
-#X obj 1024 627 writesf~ 2;
-#X msg 1026 497 open recordedSample.wav;
-#X msg 1035 581 start;
-#X msg 1093 582 stop;
+#X obj 1200 569 adc~;
+#X obj 1188 665 writesf~ 2;
+#X msg 1190 535 open recordedSample.wav;
+#X msg 1199 619 start;
+#X msg 1257 620 stop;
 #X obj 447 22 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X msg 447 85 read -resize ./recordedSample.wav channelL channelR;
@@ -482,14 +482,14 @@
 #X obj 448 635 s timestamp;
 #X obj 128 814 r timestamp;
 #X floatatom 590 751 5 0 0 0 - - -;
-#X obj 1021 798 s startBufferValue;
-#X text 1022 697 Set Slice Start;
+#X obj 1181 837 s startBufferValue;
+#X text 1182 736 Set Slice Start;
 #X text 712 665 Playhead;
 #X text 605 778 Stop Playback at end of sample;
-#X obj 1270 802 s endBufferValue;
+#X obj 1430 841 s endBufferValue;
 #X obj 621 468 r endBufferValue;
-#X obj 1348 749 r sliceEnd;
-#X text 1271 694 Set Slice End;
+#X obj 1508 788 r sliceEnd;
+#X text 1431 733 Set Slice End;
 #X obj 950 28 loadbang;
 #X obj 258 587 r volume;
 #X floatatom 259 630 5 0 0 0 - - -;
@@ -534,6 +534,8 @@
 #X text 1073 194 Slice 1 Delay Val;
 #X text 1020 208 Slice 1 LPO Val;
 #X text 956 205 Slice 1 Z Val;
+#N canvas 871 230 607 467 container 1;
+#X restore 869 468 pd container;
 #X connect 2 0 1 0;
 #X connect 2 0 45 0;
 #X connect 3 0 1 1;
